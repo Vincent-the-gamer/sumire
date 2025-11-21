@@ -40,18 +40,18 @@ export interface SumireConfig {
         host: string,
         port: number
     },
-    auth?: {
-        username: string,
+    auth?: { // if you have an account of yande.re
+        username: string, 
         password: string
     }
-    r18?: boolean
+    r18?: boolean // default: false
 }
 
 export interface Params {
     tags?: string,  // search keywords
     limit?: number, // number of pictures per search
-    login?: string,  // if you have an account of yande.re
-    password_hash?: string,  // if you have an account of yande.re
+    login?: string,  // don't pass this value, it will be auto filled if config.auth exists.
+    password_hash?: string,  // don't pass this value, it will be auto filled if config.auth exists.
     api_version?: number,  // api_version, default 2
     config?: SumireConfig  // configuration: proxy, r18 and etc.
 }

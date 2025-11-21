@@ -18,27 +18,31 @@ function hashPassword(password: string): string {
     return hash.digest('hex')
 }
 
-export async function yandere(params: Partial<Params>) {
+export async function yandere(params: Partial<Params>): Promise<Record<string, any>> {
     const apiBase = "https://yande.re/post.json"
-    
-    if(!params.api_version) {
+
+    if (!params.api_version) {
         params.api_version = 2
     }
-    
-    const { proxy, auth, r18 } = params.config!
-    
-    if(auth) {
-        params.login = auth.username
-        params.password_hash = hashPassword(auth.password)
+
+    const { proxy, yandere } = params.config!
+
+    if (yandere) {
+        const { auth, r18 } = yandere
+        if (auth) {
+            params.login = auth.username
+            params.password_hash = hashPassword(auth.password!)
+        }
+
+        let tags = params.tags
+
+        if (r18) {
+            params.tags = `rating:explicit ${tags}`
+        } else {
+            params.tags = `rating:safe ${tags}`
+        }
     }
 
-    let tags = params.tags
-
-    if(r18) {
-        params.tags = `rating:explicit ${ tags }`
-    } else {
-        params.tags = `rating:safe ${ tags }`
-    }
 
     const { data } = await axios({
         method: 'get',

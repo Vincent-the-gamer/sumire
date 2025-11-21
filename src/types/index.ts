@@ -4,9 +4,16 @@ export interface SumireConfig {
         host: string,
         port: number
     },
-    auth?: {
-        username: string,
-        password: string
+    yandere?: {
+        auth?: {
+            username?: string,
+            password?: string
+        },
+        r18?: boolean
+    },
+    pixiv?: {
+        mode?: "r18" | "all"
     }
-    r18?: boolean
 }
+
+export * from "./pixivTypes"
