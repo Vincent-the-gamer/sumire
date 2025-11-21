@@ -1,4 +1,5 @@
 <div align="center">
+    <img src=".github/sumire.png" style="height: 85px;" />
     <h1>Sumire 堇</h1>
     <p>Picture sources collection.</p>
 </div>
@@ -20,7 +21,7 @@ and more soon.
 
 ## Installation
 ```shell
-pnpm i @vince-gamer/sumire
+npm i @vince-gamer/sumire
 ```
 
 ## Usage
