@@ -23,6 +23,58 @@ and more soon.
 pnpm i @vince-gamer/sumire
 ```
 
+## Usage
+
+Here are some of examples:
+
+### Examples
+
+yande.re:
+
+**Types**:
+```ts
+export interface SumireConfig {
+    proxy?: {
+        protocol: string,
+        host: string,
+        port: number
+    },
+    auth?: {
+        username: string,
+        password: string
+    }
+    r18?: boolean
+}
+
+export interface Params {
+    tags?: string,  // search keywords
+    limit?: number, // number of pictures per search
+    login?: string,  // if you have an account of yande.re
+    password_hash?: string,  // if you have an account of yande.re
+    api_version?: number,  // api_version, default 2
+    config?: SumireConfig  // configuration: proxy, r18 and etc.
+}
+```
+
+**Function:**
+```ts
+import { yandere } from "@vince-gamer/sumire"
+
+const a = await yandere({
+    tags: "persona",
+    config: {
+        proxy: {
+            protocol: "http",
+            host: "127.0.0.1",
+            port: 7890
+        },
+        r18: true
+    }
+})
+
+console.log(a)
+```
+
 ## License
 
 [MIT](./LICENSE) License © 2025-PRESENT [Vincent-the-gamer](https://github.com/Vincent-the-gamer)

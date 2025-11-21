@@ -20,7 +20,10 @@ function hashPassword(password: string): string {
 
 export async function yandere(params: Partial<Params>) {
     const apiBase = "https://yande.re/post.json"
-    params.api_version = 2
+    
+    if(!params.api_version) {
+        params.api_version = 2
+    }
     
     const { proxy, auth, r18 } = params.config!
     
