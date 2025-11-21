@@ -1,0 +1,61 @@
+{
+  "name": "@vince-gamer/sumire",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Picture sources collection.",
+  "author": "Vincent-the-gamer",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/index.d.mts"
+      ]
+    }
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsdown",
+    "test": "vitest",
+    "dep": "taze major -I"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Vincent-the-gamer/sumire#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vincent-the-gamer/sumire.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vincent-the-gamer/sumire/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com",
+    "access": "public"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/node": "^22.19.1",
+    "deepmerge": "^4.3.1",
+    "taze": "^19.9.0",
+    "tsdown": "^0.16.6",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.10"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "consola": "^3.4.2"
+  }
+}

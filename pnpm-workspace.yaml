@@ -1,0 +1,7 @@
+packages:
+  - playground
+  - docs
+  - packages/*
+  - examples/*
+ignoredBuiltDependencies:
+  - esbuild
