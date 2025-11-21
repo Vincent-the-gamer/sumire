@@ -1,5 +1,5 @@
 <div align="center">
-    <img src=".github/sumire.png" style="height: 85px;" />
+    <img src=".github/sumire.png" style="height: 105px;" />
     <h1>Sumire 堇</h1>
     <p>Picture sources collection.</p>
 </div>
