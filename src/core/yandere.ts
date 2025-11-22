@@ -2,7 +2,7 @@ import type { SumireConfig } from '../types'
 import { createHash } from 'node:crypto'
 import axios from 'axios'
 
-export interface Params {
+interface Params {
   tags?: string
   limit?: number
   login?: string

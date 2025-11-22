@@ -59,7 +59,7 @@ export interface SumireConfig {
 
 **Types**:
 ```ts
-export interface Params {
+interface Params {
   tags?: string // search keywords
   limit?: number // number of pictures per search
   login?: string // don't pass this value, it will be auto filled if config.auth exists.
@@ -98,12 +98,10 @@ console.log(a)
 
 **Types**:
 ```ts
-export interface Params {
-  tags?: string // search keywords
-  limit?: number // number of pictures per search
-  login?: string // don't pass this value, it will be auto filled if config.auth exists.
-  password_hash?: string // don't pass this value, it will be auto filled if config.auth exists.
-  api_version?: number // api_version, default 2
+interface Params {
+  tags?: string
+  mode?: string
+  limit?: number
 }
 ```
 
