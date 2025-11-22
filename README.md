@@ -6,8 +6,6 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![bundle][bundle-src]][bundle-href]
-[![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
 ## Supported Websites
@@ -155,8 +153,5 @@ console.log(b)
 [npm-downloads-src]: https://img.shields.io/npm/dm/@vince-gamer/sumire?style=flat&colorA=080f12&colorB=1fa669
 [npm-downloads-href]: https://npmjs.com/package/@vince-gamer/sumire
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/@vince-gamer/sumire?style=flat&colorA=080f12&colorB=1fa669&label=minzip
-[bundle-href]: https://bundlephobia.com/result?p=@vince-gamer/sumire
-[license-src]: https://img.shields.io/github/license/Vincent-the-gamer/@vince-gamer/sumire.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/Vincent-the-gamer/@vince-gamer/sumire/blob/main/LICENSE
-[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
-[jsdocs-href]: https://www.jsdocs.io/package/@vince-gamer/sumire
+[license-src]: https://img.shields.io/github/license/Vincent-the-gamer/sumire.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/Vincent-the-gamer/sumire/blob/main/LICENSE
