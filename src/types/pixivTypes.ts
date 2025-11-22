@@ -23,15 +23,6 @@ export interface PixivFollowingResponse {
   }
 }
 
-export interface PixivUserProfileResponse {
-  error: boolean
-  body: {
-    illusts: {
-      [key: string]: any
-    }
-  }
-}
-
 export interface PixivResponse {
   error: boolean
   message: string
@@ -47,4 +38,17 @@ export interface PixivResponse {
       createDate: string
     }[]
   }
+}
+
+export interface PixivFollowingRequest {
+  userId?: string
+  offset?: number
+  limit?: number
+  rest?: string
+}
+
+export interface PixivFollowerRequest {
+  userId?: string
+  offset?: number
+  limit?: number
 }

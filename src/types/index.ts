@@ -1,4 +1,5 @@
 export interface SumireConfig {
+  apiDelay?: number,
   proxy?: {
     protocol: string
     host: string

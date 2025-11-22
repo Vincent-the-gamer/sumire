@@ -107,7 +107,7 @@ interface Params {
 
 **Function:**
 ```ts
-import { pixivDiscovery, pixivIllust } from '@vince-gamer/sumire'
+import { pixivDiscovery, pixivIllust, pixivUserProfile } from '@vince-gamer/sumire'
 
 // Search illusts with tags and mode
 const a = await pixivDiscovery(
@@ -140,7 +140,16 @@ const b = await pixivIllust('129887775', {
   }
 })
 
-console.log(b)
+const c = await pixivUserProfile('120227846', {
+  proxy: {
+    protocol: 'http',
+    host: '127.0.0.1',
+    port: 7890,
+  },
+  pixiv: {
+    phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
+  }
+})
 ```
 
 ## License
