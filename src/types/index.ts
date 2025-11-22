@@ -12,7 +12,9 @@ export interface SumireConfig {
         r18?: boolean
     },
     pixiv?: {
-        mode?: "r18" | "all"
+        mode?: "r18" | "safe" | "all",
+        phpSessId?: string,
+        mirror?: string // mirror of i.pximg.net, which will be blocked by referer policy.
     }
 }
 

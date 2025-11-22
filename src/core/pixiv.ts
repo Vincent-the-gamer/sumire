@@ -1,40 +1,81 @@
 import axios from "axios"
-import { SumireConfig } from "../types"
+import { PixivIllustResponse, PixivResponse, SumireConfig } from "../types"
 import { useRandomUserAgent } from "../utils/userAgent"
+import { logger } from "../utils/logger"
 
 interface Params {
-    tags?: string
-    mode?: string,
-    limit?: number,
-    config?: SumireConfig
+  tags?: string
+  mode?: string,
+  limit?: number
 }
 
 
-export async function pixivDiscovery(params: Params) {
-    const discoveryBase = 'https://www.pixiv.net/ajax/illust/discovery'
+export async function pixivDiscovery(params: Params, config?: SumireConfig) {
+  const discoveryBase = 'https://www.pixiv.net/ajax/illust/discovery'
 
-    let tags = params.tags || ""
-    
-    const { config, limit } = params
+  let tags = params.tags || ""
 
-    const { pixiv, proxy } = config!
+  if (tags) {
+    params.tags = tags
+  }
 
-    if(tags) {
-      params.tags = tags
-    }
+  if (config?.pixiv?.mode) {
+    params.mode = config.pixiv.mode
+  }
 
-    if(pixiv?.mode) {
-      params.mode = pixiv.mode
-    }
-
+  try {
     const { data } = await axios({
-        method: 'get',
-        params,
-        proxy,
-        headers: {
-          "User-Agent": useRandomUserAgent(),
-          "Referer": "https://www.pixiv.net/"
-        }
+      url: discoveryBase,
+      method: 'get',
+      params,
+      proxy: config?.proxy,
+      headers: {
+        "User-Agent": useRandomUserAgent(),
+        "Referer": "https://www.pixiv.net/",
+        "Cookie": config?.pixiv?.phpSessId ? `PHPSESSID=${config.pixiv.phpSessId}` : undefined
+      }
     })
-    
+
+    const respData: PixivResponse = data
+
+    return respData
+  } catch (e) {
+    logger.error("Fetch Pixiv Discovery metadata failed!" + e)
+    return null
+  }
+}
+
+export async function pixivIllust(artworkId: string, config?: SumireConfig) {
+  const illustBaseUrl = `https://www.pixiv.net/ajax/illust/${artworkId}/pages`
+
+  try {
+    const { data } = await axios({
+      url: illustBaseUrl,
+      method: 'get',
+      params: {},
+      proxy: config?.proxy,
+      headers: {
+        "User-Agent": useRandomUserAgent(),
+        "Referer": "https://www.pixiv.net/",
+        "Cookie": config?.pixiv?.phpSessId ? `PHPSESSID=${config.pixiv.phpSessId}` : undefined
+      }
+    })
+
+    const respData: Record<string, any> = data as PixivIllustResponse
+
+    const urls: Record<string, any> = respData.body[0].urls
+
+    if(config?.pixiv?.mirror) {
+      for(const [key, value] of Object.entries(urls)) {
+        urls[key] = value.replace("i.pximg.net", config.pixiv.mirror)
+      }
+    }
+
+    respData.body[0].urls = urls
+
+    return respData
+  } catch (e) {
+    logger.error("Connot fetch original picture link: " + e)
+    return null
+  }
 }

@@ -1,19 +1,16 @@
 export interface PixivIllustResponse {
     error: boolean
+    message: string,
     body: {
-        id: string
-        title: string
-        userName: string
-        xRestrict: number
-        createDate: string
         urls: {
-            original: string
-        }
-        tags: {
-            tags: { tag: string }[]
-        }
-        pageCount?: number
-    }
+            thumb_mini: string,
+            small: string,
+            regular: string,
+            original: string,
+        },
+        width: number,
+        height: number
+    }[]
 }
 
 export interface PixivFollowingResponse {

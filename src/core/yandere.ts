@@ -8,7 +8,6 @@ export interface Params {
     login?: string,
     password_hash?: string,
     api_version?: number,
-    config?: SumireConfig
 }
 
 function hashPassword(password: string): string {
@@ -18,17 +17,15 @@ function hashPassword(password: string): string {
     return hash.digest('hex')
 }
 
-export async function yandere(params: Partial<Params>): Promise<Record<string, any>> {
+export async function yandere(params: Partial<Params>, config?: SumireConfig): Promise<Record<string, any>> {
     const apiBase = "https://yande.re/post.json"
 
     if (!params.api_version) {
         params.api_version = 2
     }
-
-    const { proxy, yandere } = params.config!
-
-    if (yandere) {
-        const { auth, r18 } = yandere
+    
+    if (config?.yandere) {
+        const { auth, r18 } = config.yandere
         if (auth) {
             params.login = auth.username
             params.password_hash = hashPassword(auth.password!)
@@ -48,7 +45,7 @@ export async function yandere(params: Partial<Params>): Promise<Record<string, a
         method: 'get',
         url: apiBase,
         params,
-        proxy
+        proxy: config?.proxy
     })
 
     return data
