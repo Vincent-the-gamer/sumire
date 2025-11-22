@@ -24,6 +24,9 @@ npm i @vince-gamer/sumire
 
 Here are some of examples:
 
+- [Yande.re](#yandere)
+- [Pixiv](#pixiv)
+
 ### Examples
 
 Every main function like `yandere()`, `pixivIllust()` uses sumire config.
@@ -91,7 +94,7 @@ console.log(a)
 #### Pixiv
 
 > [!IMPORTANT]
-> If you get 404 on request, please login your pixiv account, then add phpSessId config in `config.pixiv`
+> If you get 404 on request, please login your pixiv account, then add **phpSessId** from cookie to `config.pixiv`
 
 **Types**:
 ```ts
