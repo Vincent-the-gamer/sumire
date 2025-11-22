@@ -34,23 +34,23 @@ Sumire universal config type:
 
 ```ts
 export interface SumireConfig {
-    proxy?: {
-        protocol: string,
-        host: string,
-        port: number
-    },
-    yandere?: {
-        auth?: {
-            username?: string,
-            password?: string
-        },
-        r18?: boolean
-    },
-    pixiv?: {
-        mode?: "r18" | "safe" | "all",
-        phpSessId?: string,
-        mirror?: string // mirror of i.pximg.net, which will be blocked by referer policy.
+  proxy?: {
+    protocol: string
+    host: string
+    port: number
+  }
+  yandere?: {
+    auth?: {
+      username?: string
+      password?: string
     }
+    r18?: boolean
+  }
+  pixiv?: {
+    mode?: 'r18' | 'safe' | 'all'
+    phpSessId?: string
+    mirror?: string // mirror of i.pximg.net, which will be blocked by referer policy.
+  }
 }
 ```
 
@@ -59,32 +59,32 @@ export interface SumireConfig {
 **Types**:
 ```ts
 export interface Params {
-    tags?: string,  // search keywords
-    limit?: number, // number of pictures per search
-    login?: string,  // don't pass this value, it will be auto filled if config.auth exists.
-    password_hash?: string,  // don't pass this value, it will be auto filled if config.auth exists.
-    api_version?: number,  // api_version, default 2
+  tags?: string // search keywords
+  limit?: number // number of pictures per search
+  login?: string // don't pass this value, it will be auto filled if config.auth exists.
+  password_hash?: string // don't pass this value, it will be auto filled if config.auth exists.
+  api_version?: number // api_version, default 2
 }
 ```
 
 **Function:**
 ```ts
-import { yandere } from "@vince-gamer/sumire"
+import { yandere } from '@vince-gamer/sumire'
 
 const a = await yandere(
-    { 
-        tags: "persona"
+  {
+    tags: 'persona'
+  },
+  {
+    proxy: {
+      protocol: 'http',
+      host: '127.0.0.1',
+      port: 7890
     },
-    {
-        proxy: {
-            protocol: "http",
-            host: "127.0.0.1",
-            port: 7890
-        },
-        yandere: {
-            r18: true
-        }
+    yandere: {
+      r18: true
     }
+  }
 )
 
 console.log(a)
@@ -98,45 +98,47 @@ console.log(a)
 **Types**:
 ```ts
 export interface Params {
-    tags?: string,  // search keywords
-    limit?: number, // number of pictures per search
-    login?: string,  // don't pass this value, it will be auto filled if config.auth exists.
-    password_hash?: string,  // don't pass this value, it will be auto filled if config.auth exists.
-    api_version?: number,  // api_version, default 2
+  tags?: string // search keywords
+  limit?: number // number of pictures per search
+  login?: string // don't pass this value, it will be auto filled if config.auth exists.
+  password_hash?: string // don't pass this value, it will be auto filled if config.auth exists.
+  api_version?: number // api_version, default 2
 }
 ```
 
 **Function:**
 ```ts
-import { pixivDiscovery, pixivIllust } from "@vince-gamer/sumire"
+import { pixivDiscovery, pixivIllust } from '@vince-gamer/sumire'
 
 // Search illusts with tags and mode
 const a = await pixivDiscovery(
   {
-    tags: "persona",
+    tags: 'persona',
     limit: 5,
-  }, {
+  },
+  {
+    proxy: {
+      protocol: 'http',
+      host: '127.0.0.1',
+      port: 7890
+    },
+    pixiv: {
+      mode: 'r18',
+      phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
+    }
+  }
+)
+
+// get the original picture(full resolution) with illust id
+const b = await pixivIllust('129887775', {
   proxy: {
-    protocol: "http",
-    host: "127.0.0.1",
+    protocol: 'http',
+    host: '127.0.0.1',
     port: 7890
   },
   pixiv: {
-    mode: "r18",
-    phpSessId: "xxxx" // pass your phpSessId in cookie if you encounter authorization issue.
+    phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
   }
-})
-
-// get the original picture(full resolution) with illust id
-const b = await pixivIllust("129887775", {
-    proxy: {
-        protocol: "http",
-        host: "127.0.0.1",
-        port: 7890
-    },
-    pixiv: {
-        phpSessId: "xxxx" // pass your phpSessId in cookie if you encounter authorization issue.
-    }
 })
 
 console.log(b)

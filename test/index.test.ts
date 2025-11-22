@@ -1,11 +1,11 @@
-import { test, expect } from "vitest"
-import qs from "querystring"
+import qs from 'node:querystring'
+import { expect } from 'vitest'
 
-test("qs", () => {
-    const str = qs.stringify({
-        a: 1,
-        b: 2
-    })
+it('qs', () => {
+  const str = qs.stringify({
+    a: 1,
+    b: 2,
+  })
 
-    expect(str).toBe("a=1&b=2")
+  expect(str).toBe('a=1&b=2')
 })

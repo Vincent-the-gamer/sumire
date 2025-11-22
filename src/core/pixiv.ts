@@ -1,19 +1,18 @@
-import axios from "axios"
-import { PixivIllustResponse, PixivResponse, SumireConfig } from "../types"
-import { useRandomUserAgent } from "../utils/userAgent"
-import { logger } from "../utils/logger"
+import type { PixivIllustResponse, PixivResponse, SumireConfig } from '../types'
+import axios from 'axios'
+import { logger } from '../utils/logger'
+import { useRandomUserAgent } from '../utils/userAgent'
 
 interface Params {
   tags?: string
-  mode?: string,
+  mode?: string
   limit?: number
 }
-
 
 export async function pixivDiscovery(params: Params, config?: SumireConfig) {
   const discoveryBase = 'https://www.pixiv.net/ajax/illust/discovery'
 
-  let tags = params.tags || ""
+  const tags = params.tags || ''
 
   if (tags) {
     params.tags = tags
@@ -30,17 +29,18 @@ export async function pixivDiscovery(params: Params, config?: SumireConfig) {
       params,
       proxy: config?.proxy,
       headers: {
-        "User-Agent": useRandomUserAgent(),
-        "Referer": "https://www.pixiv.net/",
-        "Cookie": config?.pixiv?.phpSessId ? `PHPSESSID=${config.pixiv.phpSessId}` : undefined
-      }
+        'User-Agent': useRandomUserAgent(),
+        'Referer': 'https://www.pixiv.net/',
+        'Cookie': config?.pixiv?.phpSessId ? `PHPSESSID=${config.pixiv.phpSessId}` : undefined,
+      },
     })
 
     const respData: PixivResponse = data
 
     return respData
-  } catch (e) {
-    logger.error("Fetch Pixiv Discovery metadata failed!" + e)
+  }
+  catch (e) {
+    logger.error(`Fetch Pixiv Discovery metadata failed!${e}`)
     return null
   }
 }
@@ -55,27 +55,28 @@ export async function pixivIllust(artworkId: string, config?: SumireConfig) {
       params: {},
       proxy: config?.proxy,
       headers: {
-        "User-Agent": useRandomUserAgent(),
-        "Referer": "https://www.pixiv.net/",
-        "Cookie": config?.pixiv?.phpSessId ? `PHPSESSID=${config.pixiv.phpSessId}` : undefined
-      }
+        'User-Agent': useRandomUserAgent(),
+        'Referer': 'https://www.pixiv.net/',
+        'Cookie': config?.pixiv?.phpSessId ? `PHPSESSID=${config.pixiv.phpSessId}` : undefined,
+      },
     })
 
     const respData: Record<string, any> = data as PixivIllustResponse
 
     const urls: Record<string, any> = respData.body[0].urls
 
-    if(config?.pixiv?.mirror) {
-      for(const [key, value] of Object.entries(urls)) {
-        urls[key] = value.replace("i.pximg.net", config.pixiv.mirror)
+    if (config?.pixiv?.mirror) {
+      for (const [key, value] of Object.entries(urls)) {
+        urls[key] = value.replace('i.pximg.net', config.pixiv.mirror)
       }
     }
 
     respData.body[0].urls = urls
 
     return respData
-  } catch (e) {
-    logger.error("Connot fetch original picture link: " + e)
+  }
+  catch (e) {
+    logger.error(`Connot fetch original picture link: ${e}`)
     return null
   }
 }
