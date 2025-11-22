@@ -10,9 +10,6 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-> [!NOTE]
-> Under construction.
-
 ## Supported Websites
 
 - [yande.re](https://yande.re)
