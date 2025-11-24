@@ -123,7 +123,7 @@ const a = await pixivDiscovery(
     },
     pixiv: {
       mode: 'r18',
-      phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
+      phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authentication issue.
     }
   }
 )
@@ -136,7 +136,7 @@ const b = await pixivIllust('129887775', {
     port: 7890
   },
   pixiv: {
-    phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
+    phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authentication issue.
   }
 })
 
@@ -147,7 +147,7 @@ const c = await pixivUserProfile('120227846', {
     port: 7890,
   },
   pixiv: {
-    phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
+    phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authentication issue.
   }
 })
 ```
