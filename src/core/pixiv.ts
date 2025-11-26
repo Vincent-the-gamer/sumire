@@ -104,11 +104,11 @@ export async function pixivFollowingSource(params: Partial<PixivFollowingRequest
   if (!config.pixiv?.phpSessId) {
     return {
       error: true,
-      data: new Error("You haven't provide Pixiv PHPSESSID!")
+      data: new Error('You haven\'t provide Pixiv PHPSESSID!'),
     }
   }
 
-  const followingBase = `https://www.pixiv.net/ajax/user/${ params.userId }/following?offset=${ params.offset }&limit=${ params.limit }&rest=${ params.rest }`
+  const followingBase = `https://www.pixiv.net/ajax/user/${params.userId}/following?offset=${params.offset}&limit=${params.limit}&rest=${params.rest}`
 
   const { data } = await axios({
     url: followingBase,
@@ -130,11 +130,11 @@ export async function pixivFollowerSource(params: Partial<PixivFollowerRequest>,
   if (!config.pixiv?.phpSessId) {
     return {
       error: true,
-      data: new Error("You haven't provide Pixiv PHPSESSID!")
+      data: new Error('You haven\'t provide Pixiv PHPSESSID!'),
     }
   }
 
-  const followerBase = `https://www.pixiv.net/ajax/user/${ params.userId }/followers?offset=${ params.offset }&limit=${ params.limit }`
+  const followerBase = `https://www.pixiv.net/ajax/user/${params.userId}/followers?offset=${params.offset}&limit=${params.limit}`
 
   const { data } = await axios({
     url: followerBase,

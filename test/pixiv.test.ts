@@ -45,37 +45,35 @@ async function getUserProfile() {
 
 async function getFollowingSource() {
   return await pixivFollowingSource({
-    userId: "114104704",
+    userId: '114104704',
     offset: 0,
     limit: 3,
-    rest: "show"
-  },
-  {
+    rest: 'show',
+  }, {
     proxy: {
       protocol: 'http',
       host: '127.0.0.1',
       port: 7890,
     },
     pixiv: {
-      phpSessId: "xxx"
-    }
+      phpSessId: 'xxx',
+    },
   })
 }
 
 async function getFollowerSource() {
   return await pixivFollowerSource({
-    userId: "114104704",
+    userId: '114104704',
     offset: 0,
     limit: 6,
-  },
-  {
+  }, {
     proxy: {
       protocol: 'http',
       host: '127.0.0.1',
       port: 7890,
     },
     pixiv: {
-      phpSessId: "xxx"
-    }
+      phpSessId: 'xxx',
+    },
   })
 }

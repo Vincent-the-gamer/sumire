@@ -156,21 +156,20 @@ const c = await pixivUserProfile('120227846', {
 
 // get user's following authors, requires authentication
 const d = await pixivFollowingSource({
-    userId: "114104704",
-    offset: 0,
-    limit: 3,
-    rest: "show"
+  userId: '114104704',
+  offset: 0,
+  limit: 3,
+  rest: 'show'
+}, {
+  proxy: {
+    protocol: 'http',
+    host: '127.0.0.1',
+    port: 7890,
   },
-  {
-    proxy: {
-      protocol: 'http',
-      host: '127.0.0.1',
-      port: 7890,
-    },
-    pixiv: {
-      phpSessId: "114104704_uOsEFSeEc0Bq6fnHafMVUMrLxgh0jABe"
-    }
-  })
+  pixiv: {
+    phpSessId: '114104704_uOsEFSeEc0Bq6fnHafMVUMrLxgh0jABe'
+  }
+})
 ```
 
 ##### Third-party API
@@ -178,12 +177,12 @@ const d = await pixivFollowingSource({
 Lolicon API:
 
 ```ts
-import { lolicon } from "@vince-g/sumire"
+import { lolicon } from '@vince-g/sumire'
 
 const aa = await lolicon({
-    r18: 1,
-    num: 5,
-    tag: ["萝莉", "少女"],
+  r18: 1,
+  num: 5,
+  tag: ['萝莉', '少女'],
 })
 ```
 
