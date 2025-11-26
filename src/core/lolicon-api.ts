@@ -20,7 +20,7 @@ interface LoliconParams {
   aspectRatio?: string // https://docs.api.lolicon.app/#/setu?id=aspectratio
 }
 
-export default async function lolicon(params: LoliconParams) {
+export async function lolicon(params: LoliconParams) {
   const base = 'https://api.lolicon.app/setu/v2'
 
   const { data } = await axios.post(base, params, {
