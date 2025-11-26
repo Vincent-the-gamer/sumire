@@ -198,7 +198,7 @@ interface LoliconParams {
 Function:
 
 ```ts
-import { lolicon } from '@vince-g/sumire'
+import { lolicon } from '@vince-gamer/sumire'
 
 const aa = await lolicon({
   r18: 1,
