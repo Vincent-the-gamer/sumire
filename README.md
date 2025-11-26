@@ -96,6 +96,8 @@ console.log(a)
 > [!IMPORTANT]
 > If you get 404 on request, please login your pixiv account, then add **phpSessId** from cookie to `config.pixiv`
 
+##### Official API
+
 **Types**:
 ```ts
 interface Params {
@@ -140,6 +142,7 @@ const b = await pixivIllust('129887775', {
   }
 })
 
+// get user profile
 const c = await pixivUserProfile('120227846', {
   proxy: {
     protocol: 'http',
@@ -149,6 +152,38 @@ const c = await pixivUserProfile('120227846', {
   pixiv: {
     phpSessId: 'xxxx' // pass your phpSessId in cookie if you encounter authorization issue.
   }
+})
+
+// get user's following authors, requires authentication
+const d = await pixivFollowingSource({
+    userId: "114104704",
+    offset: 0,
+    limit: 3,
+    rest: "show"
+  },
+  {
+    proxy: {
+      protocol: 'http',
+      host: '127.0.0.1',
+      port: 7890,
+    },
+    pixiv: {
+      phpSessId: "114104704_uOsEFSeEc0Bq6fnHafMVUMrLxgh0jABe"
+    }
+  })
+```
+
+##### Third-party API
+
+Lolicon API:
+
+```ts
+import { lolicon } from "@vince-g/sumire"
+
+const aa = await lolicon({
+    r18: 1,
+    num: 5,
+    tag: ["萝莉", "少女"],
 })
 ```
 

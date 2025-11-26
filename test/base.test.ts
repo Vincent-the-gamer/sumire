@@ -1,5 +1,5 @@
 import qs from 'node:querystring'
-import { expect } from 'vitest'
+import { expect, it } from 'vitest'
 
 it('qs', () => {
   const str = qs.stringify({
