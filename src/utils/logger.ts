@@ -5,7 +5,7 @@ import { consola } from 'consola'
 /**
  * Logger instance
  */
-export const logger: ConsolaInstance = consola.withTag('fast-dirpy')
+export const logger: ConsolaInstance = consola.withTag('sumire')
 
 export function setSilent(silent: boolean): void {
   if (!('CONSOLA_LEVEL' in process.env)) {
