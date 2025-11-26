@@ -1,5 +1,5 @@
 import type { PixivResponse } from '../src'
-import { pixivDiscovery, pixivFollowingSource, pixivIllust, pixivUserProfile } from '../src/core/pixiv'
+import { pixivDiscovery, pixivFollowerSource, pixivFollowingSource, pixivIllust, pixivUserProfile } from '../src/core/pixiv'
 
 async function getDiscovery(): Promise<PixivResponse | null> {
   return await pixivDiscovery(
@@ -57,13 +57,25 @@ async function getFollowingSource() {
       port: 7890,
     },
     pixiv: {
-      phpSessId: "114104704_uOsEFSeEc0Bq6fnHafMVUMrLxgh0jABe"
+      phpSessId: "xxx"
     }
   })
 }
 
-const a = await getFollowingSource()
-
-console.log(
-  JSON.stringify(a)
-)
+async function getFollowerSource() {
+  return await pixivFollowerSource({
+    userId: "114104704",
+    offset: 0,
+    limit: 6,
+  },
+  {
+    proxy: {
+      protocol: 'http',
+      host: '127.0.0.1',
+      port: 7890,
+    },
+    pixiv: {
+      phpSessId: "xxx"
+    }
+  })
+}

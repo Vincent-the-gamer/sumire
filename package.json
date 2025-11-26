@@ -1,7 +1,7 @@
 {
   "name": "@vince-gamer/sumire",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Picture sources collection.",
   "author": "Vincent-the-gamer",
   "license": "MIT",
@@ -40,7 +40,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsx",
+    "tsx": "tsx",
     "build": "tsdown",
     "test": "vitest",
     "dep": "taze major -I",
