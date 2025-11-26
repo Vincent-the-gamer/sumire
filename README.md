@@ -201,9 +201,11 @@ Function:
 import { lolicon } from '@vince-gamer/sumire'
 
 const aa = await lolicon({
-  r18: 1,
-  num: 5,
-  tag: ['萝莉', '少女'],
+    r18: 1,
+    num: 5,
+    tag: [
+      ['萝莉', '少女']
+    ],
 })
 ```
 
