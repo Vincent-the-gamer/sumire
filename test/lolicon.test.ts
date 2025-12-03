@@ -5,7 +5,7 @@ async function testLolicon() {
     r18: 1,
     num: 5,
     tag: [
-      ['萝莉', '少女']
+      ['萝莉', '少女'],
     ],
   })
 }

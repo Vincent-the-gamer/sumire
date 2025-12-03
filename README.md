@@ -167,7 +167,7 @@ const d = await pixivFollowingSource({
     port: 7890,
   },
   pixiv: {
-    phpSessId: '114104704_uOsEFSeEc0Bq6fnHafMVUMrLxgh0jABe'
+    phpSessId: 'xxx'
   }
 })
 ```
@@ -201,11 +201,11 @@ Function:
 import { lolicon } from '@vince-gamer/sumire'
 
 const aa = await lolicon({
-    r18: 1,
-    num: 5,
-    tag: [
-      ['萝莉', '少女']
-    ],
+  r18: 1,
+  num: 5,
+  tag: [
+    ['萝莉', '少女']
+  ],
 })
 ```
 
