@@ -7,5 +7,11 @@ async function testLolicon() {
     tag: [
       ['萝莉', '少女'],
     ],
+    aspectRatio: 'gte1.777lte1.778',
   })
 }
+
+const a = await testLolicon()
+console.log(
+  JSON.stringify(a),
+)
